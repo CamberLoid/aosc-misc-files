@@ -2,3 +2,5 @@ https://www.internic.net/zones/named.root
 
 https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml
 https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml
+# some actual 404 thing for test
+https://www.iana.org/404
