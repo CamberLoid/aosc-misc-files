@@ -87,6 +87,17 @@ jobs:
           git-config-name: github-actions[bot]
           git-config-email: 41898282+github-actions[bot]@users.noreply.github.com
           commit-message: "chore(ci): updated ${{ matrix.item }} ${{ steps.current-time.outputs.formattedTime }} UTC"
+      - name: Sleep to wait for GitHub process output again
+        if: ${{ steps.deploy-file.outputs.deployment-status == 'success' }}
+        run: |
+          sleep 10s
+
+      - name: checkout ${{ matrix.item }}
+        if: ${{ steps.deploy-file.outputs.deployment-status == 'success' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refs/heads/${{ matrix.item }}
 
       - name: Tagging
         if: ${{ steps.deploy-file.outputs.deployment-status == 'success' }}
